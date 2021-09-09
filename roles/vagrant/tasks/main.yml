@@ -12,11 +12,9 @@
 
 - name: Install list of packages (RHEL/CentOS)
   yum:
-    name: "{{ item }}"
+    name: "{{ vagrant_tmp_rpm }}"
     state: present
   register: install_packages
-  until: install_packages|success
+  until: install_packages is success
   retries: 5
   delay: 2
-  with_items:
-    - "{{ vagrant_tmp_rpm }}"

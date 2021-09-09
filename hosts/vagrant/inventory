@@ -11,16 +11,12 @@ ssh_key="infraci"
 vagrant_version="2.0.1"
 vagrant_checksum_sha256="df28c4ba7420dc6983955cf3af66dddddd892ad852154e9b9dbcd1acbebc083c"
 vagrantfile_dir="~/vagrant/infraci"
+vagrant_tz="Asia/Tokyo"
 
-# Specification for gitlab host
-gitlab_ip=192.168.33.10
-gitlab_cpus=1
-gitlab_memory=2048
-
-# Specification for gitlab-runner host
-gitlab_runner_ip=192.168.33.11
-gitlab_runner_cpus=1
-gitlab_runner_memory=2048
+# Specification for ci platform host
+plg_gdr_ip=192.168.33.10
+plg_gdr_cpus=1
+plg_gdr_memory=2048
 
 # Specification for ketchup host
 ketchup_ip=192.168.33.12

@@ -19,19 +19,22 @@
 
   - name: Install dependency packages
     yum:
-      name: "{{ item }}"
+      name: "{{ items }}"
       state: latest
     register: install_packages
-    until: install_packages|success
+    until: install_packages is success
     retries: 5
     delay: 2
-    with_items:
+    vars:
+      items:
       - gcc
       - make
       - kernel-headers
 
   - name: Install additional packages
-    shell: yum install -y kernel-devel-`uname -r`
+    shell: >
+      warn=no
+      yum install -y kernel-devel-`uname -r`
     when:
       - run_install_kernel_devel
 
@@ -44,4 +47,4 @@
   - name: Initialize VirtualBox
     command: /sbin/vboxconfig
 
-  when: result | failed
+  when: result is failed
